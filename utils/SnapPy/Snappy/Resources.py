@@ -41,12 +41,6 @@ class MetModel(enum.Enum):
     NrpaEC0p1Global = "nrpa_ec_0p1_global"
     GfsGribFilter = "gfs_grib_filter_fimex"
 
-    def __eq__(self, other):
-        return self.value == str(other)
-
-    def __hash__(self):
-        return self.value.__hash__()
-
 
 class Resources:
     """
@@ -94,34 +88,6 @@ class Resources:
         self.ecDefaultDomainStartX = -50.0
         self.ecDefaultDomainStartY = 25.0
 
-        startScreenFH = open(
-            os.path.join(os.path.dirname(__file__), "resources/startScreen.html"),
-            mode="r",
-            encoding="UTF-8",
-        )
-        self.startScreen = startScreenFH.read()
-        startScreenFH.close()
-        plantBB = {"west": -60, "east": 70, "north": 85, "south": 30}
-        npps = self.readNPPs(plantBB)
-        nppStrings = []
-        for tag, site in npps.items():
-            nppStrings.append(
-                '<option value="{tag}">{site}</option>\n'.format(
-                    tag=tag, site=site["site"]
-                )
-            )
-        self.startScreen = re.sub(
-            r"%NPP_OPTIONS%", "".join(nppStrings), self.startScreen
-        )
-        self.startScreen = re.sub(
-            r"%CURRENTTIME%", strftime("%Y-%m-%d %H:00", gmtime()), self.startScreen
-        )
-
-        ecmodelruns = ""
-        for run in self.getECRuns():
-            ecmodelruns += '<option value="{run}">{run}</option>\n'.format(run=run)
-        self.startScreen = re.sub(r"%ECMODELRUN%", ecmodelruns, self.startScreen)
-
     def getDefaultMetDefinitions(self, metmodel):
         """get the default meteo-definitions as dict to be used as *dict for getSnapInputMetDefinitions"""
         if metmodel == MetModel.H12 or metmodel == MetModel.Hirlam12:
@@ -141,20 +107,6 @@ class Resources:
             return {}
 
         raise (NotImplementedError("metmodel='{}' not implememented".format(metmodel)))
-
-    def getStartScreen(self):
-        return self.startScreen
-
-    def getStartScreenInverse(self):
-        with open(
-            os.path.join(
-                os.path.dirname(__file__), "resources/startScreenInverse.html"
-            ),
-            mode="r",
-            encoding="UTF-8",
-        ) as sfh:
-            startScreenInverse = sfh.read()
-        return startScreenInverse
 
     def getIconPath(self):
         return os.path.join(os.path.dirname(__file__), "resources/radioMapIcon.png")
@@ -568,7 +520,6 @@ GRAVITY.FIXED.M/S=0.0002
 
 
 if __name__ == "__main__":
-    print(Resources().getStartScreen())
     print(
         Resources().getECMeteorologyFiles(datetime.combine(date.today(), time(0)), 48)
     )

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindow.ui'
+# Form implementation generated from reading ui file 'Snappy/MainWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.1
 #
@@ -22,8 +22,8 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setObjectName("tabWidget")
+        self.application_tabs = QtWidgets.QTabWidget(self.centralwidget)
+        self.application_tabs.setObjectName("application_tabs")
         self.snap_na = QtWidgets.QWidget()
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -252,7 +252,7 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.snap_na_show_advanced)
         self.snap_na_start_time = QtWidgets.QDateTimeEdit(self.groupBox)
         self.snap_na_start_time.setDate(QtCore.QDate(2020, 1, 1))
-        self.snap_na_start_time.setDisplayFormat("yyyy-MM-dd HH:mm")
+        self.snap_na_start_time.setDisplayFormat("yyyy-MM-dd HH:mm UTC")
         self.snap_na_start_time.setCalendarPopup(True)
         self.snap_na_start_time.setTimeSpec(QtCore.Qt.UTC)
         self.snap_na_start_time.setObjectName("snap_na_start_time")
@@ -336,7 +336,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addItem(spacerItem, 3, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_2.addWidget(self.scrollArea)
-        self.tabWidget.addTab(self.snap_na, "")
+        self.application_tabs.addTab(self.snap_na, "")
         self.snap_backtrack = QtWidgets.QWidget()
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -536,7 +536,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addItem(spacerItem1)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.verticalLayout_3.addWidget(self.scrollArea_2)
-        self.tabWidget.addTab(self.snap_backtrack, "")
+        self.application_tabs.addTab(self.snap_backtrack, "")
         self.eemep_ash_cloud = QtWidgets.QWidget()
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -783,8 +783,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addItem(spacerItem2)
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
         self.verticalLayout_7.addWidget(self.scrollArea_3)
-        self.tabWidget.addTab(self.eemep_ash_cloud, "")
-        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.application_tabs.addTab(self.eemep_ash_cloud, "")
+        self.gridLayout.addWidget(self.application_tabs, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.label_14.setBuddy(self.snap_na_plot_region)
         self.label_15.setBuddy(self.snap_na_bdiana_version)
@@ -804,7 +804,7 @@ class Ui_MainWindow(object):
         self.label_9.setBuddy(self.snap_na_i131)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.application_tabs.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.snap_na_duration, self.snap_na_run_length)
         MainWindow.setTabOrder(self.snap_na_run_length, self.snap_na_location)
@@ -813,8 +813,8 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.snap_na_longitude, self.snap_na_plot_region)
         MainWindow.setTabOrder(self.snap_na_plot_region, self.snap_na_bdiana_version)
         MainWindow.setTabOrder(self.snap_na_bdiana_version, self.snap_na_run)
-        MainWindow.setTabOrder(self.snap_na_run, self.tabWidget)
-        MainWindow.setTabOrder(self.tabWidget, self.snap_bt_output_dir)
+        MainWindow.setTabOrder(self.snap_na_run, self.application_tabs)
+        MainWindow.setTabOrder(self.application_tabs, self.snap_bt_output_dir)
         MainWindow.setTabOrder(self.snap_bt_output_dir, self.snap_bt_run_length)
         MainWindow.setTabOrder(self.snap_bt_run_length, self.snap_bt_measurements)
         MainWindow.setTabOrder(self.snap_bt_measurements, self.snap_bt_met_input)
@@ -864,7 +864,7 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "Cs-137 release (Bq / s)"))
         self.label_8.setText(_translate("MainWindow", "Xe-133 release (Bq / s)"))
         self.label_9.setText(_translate("MainWindow", "I-131 release (Bq / s)"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.snap_na), _translate("MainWindow", "SNAP Nuclear Accident"))
+        self.application_tabs.setTabText(self.application_tabs.indexOf(self.snap_na), _translate("MainWindow", "SNAP Nuclear Accident"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Case setup"))
         self.label_16.setText(_translate("MainWindow", "Output directory"))
         self.label_17.setText(_translate("MainWindow", "Run length"))
@@ -873,7 +873,7 @@ class Ui_MainWindow(object):
         self.label_18.setText(_translate("MainWindow", "optional, e.g.\n"
 "/lustre/storeB/project/fou/kl/cerad/Projects/2017_Ephsogam/EC_MET/NRPA_EUROPE_0_1_{UTC:02d}/meteo{year:04d}{month:02d}{day:02d}_{dayoffset:02d}.nc"))
         self.snap_bt_run.setText(_translate("MainWindow", "Run SNAP backtrack"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.snap_backtrack), _translate("MainWindow", "SNAP Backtracking"))
+        self.application_tabs.setTabText(self.application_tabs.indexOf(self.snap_backtrack), _translate("MainWindow", "SNAP Backtracking"))
         self.groupBox_7.setTitle(_translate("MainWindow", "Ash source term"))
         self.label_19.setText(_translate("MainWindow", "UTC start time (YYYY-MM-DD HH:MM)"))
         self.label_20.setText(_translate("MainWindow", "Ash cloud height"))
@@ -889,4 +889,4 @@ class Ui_MainWindow(object):
         self.label_27.setText(_translate("MainWindow", "EC model run time"))
         self.label_26.setText(_translate("MainWindow", "Volcano altitude"))
         self.eemep_run.setText(_translate("MainWindow", "Run EEMEP ash cloud"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.eemep_ash_cloud), _translate("MainWindow", "EEMEP Ash Cloud"))
+        self.application_tabs.setTabText(self.application_tabs.indexOf(self.eemep_ash_cloud), _translate("MainWindow", "EEMEP Ash Cloud"))

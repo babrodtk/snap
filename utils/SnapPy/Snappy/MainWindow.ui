@@ -23,7 +23,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="application_tabs">
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -643,7 +643,7 @@
                     </date>
                    </property>
                    <property name="displayFormat">
-                    <string notr="true">yyyy-MM-dd HH:mm</string>
+                    <string notr="true">yyyy-MM-dd HH:mm UTC</string>
                    </property>
                    <property name="calendarPopup">
                     <bool>true</bool>
@@ -2015,7 +2015,7 @@
   <tabstop>snap_na_plot_region</tabstop>
   <tabstop>snap_na_bdiana_version</tabstop>
   <tabstop>snap_na_run</tabstop>
-  <tabstop>tabWidget</tabstop>
+  <tabstop>application_tabs</tabstop>
   <tabstop>snap_bt_output_dir</tabstop>
   <tabstop>snap_bt_run_length</tabstop>
   <tabstop>snap_bt_measurements</tabstop>

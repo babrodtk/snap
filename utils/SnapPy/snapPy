@@ -2,43 +2,58 @@
 #
 # SNAP: Servere Nuclear Accident Programme
 # Copyright (C) 1992-2017   Norwegian Meteorological Institute
-# 
-# This file is part of SNAP. SNAP is free software: you can 
-# redistribute it and/or modify it under the terms of the 
-# GNU General Public License as published by the 
+#
+# This file is part of SNAP. SNAP is free software: you can
+# redistribute it and/or modify it under the terms of the
+# GNU General Public License as published by the
 # Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
 import sys
-from PyQt5 import QtGui, QtWidgets
-from Snappy.SnapController import SnapController
-from Snappy.SnapControllerInverse import SnapControllerInverse
-from Snappy.BrowserWidget import BrowserWidget
-import Snappy.EEMEP.Resources
-import Snappy.EEMEP.Controller
+import logging
+import argparse
+#from Snappy.SnapControllerInverse import SnapControllerInverse
+#from Snappy.BrowserWidget import BrowserWidget
+#import Snappy.EEMEP.Resources
+#import Snappy.EEMEP.Controller
+
+from PyQt5.QtWidgets import QApplication
+from Snappy.SnapPyGui import SnapPyGui
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    tabs = QtWidgets.QTabWidget()
-    snap = SnapController()
-    snapBack = SnapControllerInverse()
-    eemep = Snappy.EEMEP.Controller.Controller()
-    tabs.addTab(snap.main, 'SNAP Nuclear Accident')
-    tabs.addTab(snapBack.main, 'SNAP Backtracking')
-    tabs.addTab(eemep.main, 'EEMEP Ash Cloud')
-    tabs.resize(960,1024)
-    tabs.setWindowTitle('SNAPpy')
-    tabs.setWindowIcon(QtGui.QIcon(snap.res.getIconPath()))
-    tabs.show()
+    #app = QtWidgets.QApplication(sys.argv)
+    #tabs = QtWidgets.QTabWidget()
+    #snap = SnapController()
+    #snapBack = SnapControllerInverse()
+    #eemep = Snappy.EEMEP.Controller.Controller()
+    #tabs.addTab(snap.main, 'SNAP Nuclear Accident')
+    #tabs.addTab(snapBack.main, 'SNAP Backtracking')
+    #tabs.addTab(eemep.main, 'EEMEP Ash Cloud')
+    #tabs.resize(960,1024)
+    #tabs.setWindowTitle('SNAPpy')
+    #tabs.setWindowIcon(QtGui.QIcon(snap.res.getIconPath()))
+    #tabs.show()
 
+    parser = argparse.ArgumentParser(description='GUI for running atmospheric (nuclear/ash) dispersion models')
+    args = parser.parse_args()
 
+    app = QApplication([])
+
+    logging.basicConfig(format='%(asctime)s (%(levelname)s) : %(message)s',
+                         level=logging.INFO, stream=sys.stdout)
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    window = SnapPyGui()
+
+    logger.debug("Starting now")
     sys.exit(app.exec_())
