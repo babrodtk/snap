@@ -101,7 +101,7 @@ class SnapController():
 
     def write_log(self, txt:str):
         self.logger.debug(txt)
-        self.main.evaluate_javaScript('updateSnapLog({0});'.format(json.dumps(txt)))
+        #self.main.evaluate_javaScript('updateSnapLog({0});'.format(json.dumps(txt)))
 
     def _snap_finished(self):
         self.logger.debug("finished")

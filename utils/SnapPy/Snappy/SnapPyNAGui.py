@@ -4,7 +4,7 @@ import re
 
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QValidator, QIntValidator, QDoubleValidator, QRegExpValidator
-from PyQt5.QtCore import Qt, QRegExp
+from PyQt5.QtCore import Qt, QRegExp, QDateTime, QTime
 
 from Snappy.SnapController import SnapController
 from Snappy.Resources import Resources, MetModel
@@ -115,6 +115,11 @@ class SnapPyNAGui():
 
     def setupUi(self):
         self.logger.debug("Setting up SNAP nuclear accident GUI elements")
+
+        #Set now as current data
+        now = QDateTime.currentDateTimeUtc()
+        now.setTime(QTime(now.time().hour(), 0, 0))
+        self.gui.snap_na_start_time.setDateTime(now)
 
         #Check input arguments in Nuclear source term box
         self.gui.snap_na_duration.setValidator(QDoubleValidator(0, 2000, 2))
